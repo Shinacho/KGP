@@ -10,6 +10,7 @@ static XINPUT_STATE state;
 static XINPUT_GAMEPAD gamepad;
 
 
+
 JNIEXPORT jfloatArray JNICALL Java_kinugasa_game_input_GamePadConnection_getNativeState(JNIEnv* env, jclass thisj, jint plIdx) {
  jfloatArray result = env->NewFloatArray(kinugasa_game_input_GamePadConnection_LENGTH);
  ZeroMemory(&state, sizeof(XINPUT_STATE));
@@ -37,13 +38,12 @@ JNIEXPORT jfloatArray JNICALL Java_kinugasa_game_input_GamePadConnection_getNati
  stateData[kinugasa_game_input_GamePadConnection_THUMB_STICK_RIGHT_X] = (float)gamepad.sThumbRX / (float)kinugasa_game_input_GamePadConnection_THUMSTICK_ABS_MAX * 2.0f;
  stateData[kinugasa_game_input_GamePadConnection_THUMB_STICK_RIGHT_Y] = (float)gamepad.sThumbRY / (float)kinugasa_game_input_GamePadConnection_THUMSTICK_ABS_MAX * 2.0f;
  stateData[kinugasa_game_input_GamePadConnection_CONNECTION] = (connection == ERROR_SUCCESS);
- jfloat* aryP = env->GetFloatArrayElements(result, NULL);
+ jfloat*  aryP = env->GetFloatArrayElements(result, NULL);
  for (int i = 0; i < kinugasa_game_input_GamePadConnection_LENGTH; i++) aryP[i] = stateData[i];
  env->ReleaseFloatArrayElements(result, aryP, 0);
  return result;
 }
 
 JNIEXPORT void JNICALL Java_kinugasa_game_input_GamePadConnection_free(JNIEnv* env, jclass thisj) {
- free(&state);
- free(&gamepad);
+ //処理なし
 }
