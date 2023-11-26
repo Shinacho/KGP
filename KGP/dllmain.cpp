@@ -5,11 +5,8 @@
 
 #pragma comment(lib,"Xinput.lib")
 
-
 static XINPUT_STATE state;
 static XINPUT_GAMEPAD gamepad;
-
-
 
 JNIEXPORT jfloatArray JNICALL Java_kinugasa_game_input_GamePadConnection_getNativeState(JNIEnv* env, jclass thisj, jint plIdx) {
  jfloatArray result = env->NewFloatArray(kinugasa_game_input_GamePadConnection_LENGTH);
